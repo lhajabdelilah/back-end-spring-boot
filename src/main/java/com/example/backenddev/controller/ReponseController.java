@@ -33,10 +33,6 @@ public class ReponseController {
         return  reponseService.getAllReponse() ;
     }
 
-    @GetMapping("/getScore")
-    public  double getdiegnosticscore(@PathVariable Long id){
-      return reponseService.getScore(id);
-    }
 
 
 

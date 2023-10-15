@@ -11,7 +11,7 @@ public interface ReponseService {
     Reponse getReponse(Long id);
     Reponse saveReponse(Reponse R);
     List<Reponse> getallreponseByid(Long id);
-    Double getScore(Long id);
+
 
 
 }

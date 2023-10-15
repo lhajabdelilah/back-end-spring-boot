@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 @Service
-public class ReponseServiceImplimentaion  implements  ReponseService{
+public class ReponseServiceImplimentaion  implements  ReponseService {
     @Autowired
     ReponseRepository reponseRepository;
 
@@ -22,7 +22,7 @@ public class ReponseServiceImplimentaion  implements  ReponseService{
 
     @Override
     public void deleteReponseByid(Long id) {
-       reponseRepository.deleteById(id);
+        reponseRepository.deleteById(id);
     }
 
     @Override
@@ -40,22 +40,7 @@ public class ReponseServiceImplimentaion  implements  ReponseService{
         return reponseRepository.findAllById(Collections.singleton(id));
     }
 
-    @Autowired
-QuestionService  questionServicel;
-    @Autowired
-    ReponseService reponseService;
 
-    User user;
 
-    @Override
-    public Double getScore(Long id) {
-        double score=0;
- List<Reponse> reponseuser ;
- List<Question> questions;
- reponseuser=reponseService.getallreponseByid(id);
- questions=questionServicel.getAllQuestion();
- for(int i=0 ; i<reponseuser.size();i++){
-     if (reponseuser.get(i).getResponse()==questions.get(i).getCon_vraie()){score++ ;}
- }
- return  score;}
+
 }

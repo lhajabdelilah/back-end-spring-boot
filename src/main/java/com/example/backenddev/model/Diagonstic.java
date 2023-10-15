@@ -12,14 +12,11 @@ public class Diagonstic {
     public Diagonstic() {
     }
 
-    public Diagonstic(Double score) {
-        this.score = score;
-    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_diagnostique;
-    private Double score;
     @OneToMany
     @JoinColumn(name ="diagnostique_id" )
     private List<User> UserList ;
@@ -41,14 +38,7 @@ public class Diagonstic {
         this.id_diagnostique = id_diagnostique;
     }
 
-    public Double getScore() {
-        return score;
-    }
-
-    public void setScore(Double score) {
-        this.score = score;
-    }
-
+  
     public List<User> getUserList() {
         return UserList;
     }

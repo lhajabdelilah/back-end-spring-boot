@@ -4,6 +4,7 @@ package com.example.backenddev.controller;
 import com.example.backenddev.model.User;
 import com.example.backenddev.service.UserService;
 import com.example.backenddev.service.UserServiceImplimentation;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,12 @@ public class UserController {
         return  userService.saveUser(U);
     }
 
+    @PostMapping("/edit")
+    public  User updateUser(@RequestBody User U){
+        return  userService.updateUser(U);
+    }
+
+
 
     @DeleteMapping("/delete/{id}")
     public  void deleteById(@PathVariable Long id){
@@ -36,10 +43,20 @@ public class UserController {
         return  userService.getAllUser();
     }
 
+    @GetMapping("/score/{id}")
+    public int  getScore(@PathVariable Long id){
+        return  userService.getScore(id);
+    }
+
+
     @PostMapping("/login")
-    public String Login(@RequestParam("email") String email, @RequestParam("password") String password) {
-        User utilisateur = userService.login(email, password);
+    public String Login(@RequestBody User password) {
+        String email= password.getEmail();
+        String passwo = password.getPassword();
+        User utilisateur = userService.login(email, passwo);
         if (utilisateur != null) {
+
+
             return "redirect:/diagnostic";
         } else {
             return "error";
